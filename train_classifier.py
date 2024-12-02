@@ -1,3 +1,12 @@
+## PARTIE 01
+from sklearn.datasets import make_classification
+from sklearn.model_selection import train_test_split
+
+## PARTIE 03
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import confusion_matrix
+
 X, y = make_classification(
     n_samples=10000,
     n_informative=10,
@@ -20,3 +29,27 @@ scatter = plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap='viridis', edgecolor='
 plt.colorbar(scatter)
 plt.title("Données (PCA)")
 plt.show() """
+
+## PARTIE 03
+
+X_entrainement, X_autre, y_entrainement, y_autre = train_test_split(X, y, test_size=0.3)  # 70% d'entrainement et 30% de test et de validation
+X_validation, X_test, y_validation, y_test = train_test_split(X_autre, y_autre, test_size=1/3)  # 10% de validation et  20% de test
+
+modele = RandomForestClassifier()
+
+modele.fit(X_entrainement, y_entrainement)
+
+prediction = modele.predict(X_test)
+
+precision = accuracy_score(y_test, prediction)
+
+precision_recall_f1Score = classification_report(y_test, prediction)
+
+matrice_confusion = confusion_matrix(y_test, prediction)
+
+print("La performance du modèle Random Forest sur l'ensemble de test généré est :")
+print(f"La précision du test est: {precision:.4f}")
+print("La précision - Recall - Score F1:")
+print(precision_recall_f1Score)
+print("La matrice de Confusion:")
+print(matrice_confusion)
