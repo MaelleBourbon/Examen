@@ -3,11 +3,11 @@ import pandas as pd
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 # on importe le modèle entraîné
-modele = joblib.load('modele_entraine.joblib')  # Charger le modèle depuis le fichier .joblib
+modele = joblib.load('/app/output/modele_entraine.joblib')  # Charger le modèle depuis le fichier .joblib
 
 # on charge les données de validation
-X_validation = pd.read_csv('X_validation.csv')  # Charger X_validation depuis le fichier CSV
-y_validation = pd.read_csv('y_validation.csv')  # Charger y_validation depuis le fichier CSV
+X_validation = pd.read_csv('/app/output/X_validation.csv')  # Charger X_validation depuis le fichier CSV
+y_validation = pd.read_csv('/app/output/y_validation.csv')  # Charger y_validation depuis le fichier CSV
 
 X_validation1 = X_validation.values  
 y_validation1 = y_validation['target'].values 
