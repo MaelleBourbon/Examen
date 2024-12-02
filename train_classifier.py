@@ -62,7 +62,7 @@ print(matrice_confusion)
 df_X_validation = pd.DataFrame(X_validation)
 df_y_validation = pd.DataFrame(y_validation, columns=['target'])
 
-df_X_validation.to_csv('X_validation.csv', index=False)
-df_y_validation.to_csv('y_validation.csv', index=False)
+df_X_validation.to_csv('/app/output/X_validation.csv', index=False)
+df_y_validation.to_csv('/app/output/y_validation.csv', index=False)
 
-joblib.dump(modele, 'modele_entraine.joblib')
+joblib.dump(modele, '/app/output/modele_entraine.joblib')
