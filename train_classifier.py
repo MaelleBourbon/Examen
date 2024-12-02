@@ -2,10 +2,13 @@
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
 
-## PARTIE 03
+## import
+import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.metrics import confusion_matrix
+import joblib
+
 
 X, y = make_classification(
     n_samples=10000,
@@ -53,3 +56,13 @@ print("La précision - Recall - Score F1:")
 print(precision_recall_f1Score)
 print("La matrice de Confusion:")
 print(matrice_confusion)
+
+###Partie 4
+
+df_X_validation = pd.DataFrame(X_validation)
+df_y_validation = pd.DataFrame(y_validation, columns=['target'])
+
+df_X_validation.to_csv('X_validation.csv', index=False)
+df_y_validation.to_csv('y_validation.csv', index=False)
+
+joblib.dump(modele, 'modele_entraine.joblib')
